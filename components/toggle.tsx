@@ -2,7 +2,10 @@ import React from 'react';
 // this switch implements a checkbox input and is not relevant for this example
 import { Switch } from './switch';
 
-const ToggleContext = React.createContext();
+const ToggleContext = React.createContext<{
+  on: boolean;
+  toggle: (a: boolean) => any;
+}>(null);
 
 function useEffectAfterMount(cb, dependencies) {
   const justMounted = React.useRef(true);

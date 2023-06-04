@@ -11,37 +11,40 @@ import React from 'react';
 // this is here to fill in for the onChange handler
 // we're not using onChange because it seems to behave
 // differently in codesandbox and locally :shrug:
-const noop = () => {};
+const noop = (v) => {
+  console.log(v);
 
-class Switch extends React.Component {
-  render() {
-    const {
-      on,
-      className = '',
-      'aria-label': ariaLabel,
-      onClick,
-      ...props
-    } = this.props;
-    const btnClassName = [
-      className,
-      styles['toggle-btn'],
-      on ? styles['toggle-btn-on'] : styles['toggle-btn-off'],
-    ]
-      .filter(Boolean)
-      .join(' ');
-    return (
-      <label aria-label={ariaLabel || 'Toggle'} className={styles.label}>
-        <input
-          className={btnClassName}
-          type='checkbox'
-          checked={on}
-          onChange={noop}
-          onClick={onClick}
-          data-testid='toggle-input'
-        />
-      </label>
-    );
-  }
-}
+};
+
+type Props = {
+  on: boolean;
+  className?: string;
+  'aria-label'?: string;
+  onClick: React.MouseEventHandler<HTMLInputElement>;
+};
+
+const Switch = (props: Props) => {
+  const { on, className = '', 'aria-label': ariaLabel, onClick } = props;
+  const btnClassName = [
+    className,
+    styles['toggle-btn'],
+    on ? styles['toggle-btn-on'] : styles['toggle-btn-off'],
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return (
+    <label aria-label={ariaLabel || 'Toggle'} className={styles.label}>
+      <input
+        className={btnClassName}
+        type='checkbox'
+        checked={on}
+        onChange={noop}
+        onClick={onClick}
+        data-testid='toggle-input'
+      />
+    </label>
+  );
+};
 
 export { Switch };
