@@ -1,0 +1,50 @@
+/*
+toggle styles copied and modified from
+https://codepen.io/mallendeo/pen/eLIiG
+by Mauricio Allende (https://mallendeo.com/)
+ */
+
+
+.label {
+  --switch-height: 14px;
+
+  display: block;
+  height: var(--switch-height);
+}
+
+.toggle-btn {
+  appearance: none;
+  box-sizing: border-box;
+  display: inline-block;
+  outline: 0;
+  width: 22px;
+  height: var(--switch-height);
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  background: #e5e7eb;
+  border-radius: 4em;
+  padding: 2px;
+  transition: 200ms all;
+
+  --tailwind-green-500: #22c55e;
+}
+
+.toggle-btn::after {
+  left: 2px;
+  position: absolute;
+  display: block;
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 4em;
+  background: #fbfbfb;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+  transition: 200ms all;
+}
+.toggle-btn.toggle-btn-on::after {
+  left: calc(50% - 1px);
+}
+.toggle-btn.toggle-btn-on {
+  background: var(--tailwind-green-500);
+}
