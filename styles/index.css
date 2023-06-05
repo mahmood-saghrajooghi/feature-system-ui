@@ -1,3 +1,129 @@
 @tailwind base;
 @tailwind components;
+
+/* KeyTracker */
+
+.KeyTracker {
+  @apply text-xs text-right text-gray-400 border border-gray-600 rounded-md px-2 py-1 bg-gray-900;
+}
+
+.KeyTracker .Key {
+  @apply duration-200;
+}
+
+.KeyTracker .Key.Active {
+  @apply text-gray-100;
+}
+
+/* FeatureItem */
+
+.FeatureItem {
+  @apply flex items-center justify-between p-2 py-1 duration-100 rounded-md hover:bg-gray-800 focus-within:bg-gray-800 focus-within:ring-2 focus-within:ring-gray-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900;
+}
+
+.FeatureItemNameWrapper {
+  @apply flex gap-2;
+}
+
+.FeatureItemInput {
+  @apply bg-gray-700 text-gray-100 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-900;
+}
+
+.FeatureItemInnerDiv {
+  @apply flex items-center space-x-2 text-xs;
+}
+
+.FeatureItemNameDiv {
+  @apply px-2 py-1;
+}
+
+.FeatureItem:hover .FeatureItemButton {
+  @apply text-gray-400 block;
+}
+
+.FeatureItemButton {
+  @apply text-gray-400 hidden;
+}
+
+.FeatureItemButtonGroup {
+  @apply flex items-center space-x-2;
+}
+
+.FeatureItemButtonSaved {
+  @apply text-green-500;
+}
+
+
+/* FeatureSystemModal */
+.Position {
+  @apply absolute bottom-5 right-5;
+}
+
+.FeatureSystem {
+  @apply absolute bottom-1 right-1 w-96 bg-gray-900 text-gray-100 rounded-md;
+}
+
+.FeatureSystem .Container {
+  @apply relative p-4 space-y-2;
+}
+
+.FeatureSystem .Button {
+  @apply absolute top-4 right-4 text-gray-400 rounded-sm;
+}
+
+.FeatureSystem .Button:hover {
+  @apply text-gray-100;
+}
+
+.FeatureSystem .Button:focus {
+  @apply outline-none ring-2 ring-gray-600 ring-offset-2 ring-offset-gray-900;
+}
+
+.FeatureSystem .Section1 {
+  @apply space-y-2 border-b border-gray-600 pb-2 !mt-0;
+}
+
+.FeatureSystem .Button2 {
+  @apply text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded-md;
+}
+
+.FeatureSystem .Button2:focus {
+  @apply outline-none ring-2 ring-gray-600 ring-offset-2 ring-offset-gray-900;
+}
+
+.FeatureSystem .Section2 {
+  @apply space-y-2;
+}
+
+.FeatureSystem .Flex {
+  @apply flex items-center justify-between;
+}
+
+/* CodeBlock */
+.CodeBlock {
+  @apply text-xs relative p-4 bg-gray-800 rounded-md;
+}
+
+.CodeBlock:hover .Button {
+  @apply visible opacity-100;
+}
+
+.CodeBlock .Pre {
+  @apply whitespace-pre-wrap break-all;
+}
+
+.CodeBlock .Button {
+  @apply absolute right-2 top-2 border border-gray-600 bg-gray-700 flex items-center w-7 h-7 justify-center rounded-md duration-200 invisible opacity-0;
+}
+
+.CodeBlock .Button.BorderGreen {
+  @apply border-green-500;
+}
+
+.CodeBlock .Button .CheckIcon {
+  @apply text-green-500;
+}
+
+/* FeatureItem */
+
 @tailwind utilities;

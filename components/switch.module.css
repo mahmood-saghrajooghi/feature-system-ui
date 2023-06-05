@@ -4,15 +4,14 @@ https://codepen.io/mallendeo/pen/eLIiG
 by Mauricio Allende (https://mallendeo.com/)
  */
 
-
-.label {
+ .Label {
   --switch-height: 14px;
 
   display: block;
   height: var(--switch-height);
 }
 
-.toggle-btn {
+.ToggleBtn {
   appearance: none;
   box-sizing: border-box;
   display: inline-block;
@@ -30,7 +29,7 @@ by Mauricio Allende (https://mallendeo.com/)
   --tailwind-green-500: #22c55e;
 }
 
-.toggle-btn::after {
+.ToggleBtn::after {
   left: 2px;
   position: absolute;
   display: block;
@@ -42,9 +41,9 @@ by Mauricio Allende (https://mallendeo.com/)
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
   transition: 200ms all;
 }
-.toggle-btn.toggle-btn-on::after {
+.ToggleBtn.ToggleBtnOn::after {
   left: calc(50% - 1px);
 }
-.toggle-btn.toggle-btn-on {
+.ToggleBtn.ToggleBtnOn {
   background: var(--tailwind-green-500);
 }

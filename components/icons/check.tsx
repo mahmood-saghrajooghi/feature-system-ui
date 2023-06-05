@@ -1,11 +1,17 @@
-const Check = ({ className }) => {
+const Check = ({
+  className,
+  width,
+}: {
+  className?: string;
+  width?: string | number;
+}) => {
   return (
     <svg
       aria-hidden='true'
       height='16'
       viewBox='0 0 16 16'
       version='1.1'
-      width='14'
+      width={width || '14'}
       className={className}
     >
       <path

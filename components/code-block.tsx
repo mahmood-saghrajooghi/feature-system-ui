@@ -17,18 +17,16 @@ const CodeBlock = ({ children }) => {
 
   return (
     <div
-      className='text-xs relative p-4 bg-gray-800 group rounded-md'
+      className='CodeBlock'
       onMouseLeave={handleMouseLeave}
     >
-      <pre className='whitespace-pre-wrap	break-all'>{children}</pre>
+      <pre className='Pre'>{children}</pre>
       <button
-        className={`absolute right-2 top-2 border border-gray-600  bg-gray-700 flex items-center w-7 h-7 justify-center rounded-md duration-200 invisible opacity-0 group-hover:visible group-hover:opacity-100 ${
-          renderCheck ? 'border-green-500' : ''
-        }`}
+        className={`Button ${renderCheck ? 'BorderGreen' : ''}`}
         onClick={copy}
       >
         {renderCheck ? (
-          <Check className='text-green-500' />
+          <Check className='CheckIcon' />
         ) : (
           <Copy className='' />
         )}

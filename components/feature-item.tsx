@@ -1,27 +1,62 @@
 import Toggle from './toggle';
 import Save from './icons/save';
 import Saved from './icons/saved';
+import { useRef, useState } from 'react';
+import Edit from './icons/edit';
+import Check from './icons/check';
 
 const FeatureItem = ({
-  children,
+  name,
   active,
   onActiveChange,
   saved,
   onSaveChange,
+  onNameChange,
 }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentName, setCurrentName] = useState(name);
   return (
-    <div className='flex items-center justify-between p-2 duration-100 rounded-md hover:bg-gray-800 focus-within:bg-gray-800 focus-within:ring-2 focus-within:ring-gray-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900'>
-      <div className='flex items-center space-x-2 text-xs'>
+    <div className='FeatureItem'>
+      <div className='FeatureItemInnerDiv'>
         <Toggle checked={active} onChange={onActiveChange}>
           <Toggle.Button />
-          <span>{children}</span>
+          <span className='FeatureItemNameWrapper '>
+            {isEditing ? (
+              <input
+                value={currentName}
+                autoFocus
+                onChange={(e) => setCurrentName(e.target.value)}
+                className='FeatureItemInput'
+              />
+            ) : (
+              <div className='FeatureItemNameDiv'>{name}</div>
+            )}
+            {isEditing ? (
+              <button
+                onClick={() => {
+                  onNameChange(currentName);
+                  setIsEditing(false);
+                }}
+                className='FeatureItemButton'
+              >
+                <Check width={12} />
+              </button>
+            ) : (
+              <button
+                onClick={() => setIsEditing(true)}
+                className='FeatureItemButton'
+              >
+                <Edit width={12} />
+              </button>
+            )}
+          </span>
         </Toggle>
       </div>
-      <div className='flex align-center space-x-2'>
+      <div className='FeatureItemButtonGroup'>
         <button
           onClick={onSaveChange}
           title='Persist'
-          className={saved ? 'text-green-500' : ''}
+          className={saved ? 'FeatureItemButtonSaved' : ''}
         >
           {saved ? <Saved /> : <Save />}
         </button>

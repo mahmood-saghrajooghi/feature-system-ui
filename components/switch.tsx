@@ -27,14 +27,14 @@ const Switch = (props: Props) => {
   const { on, className = '', 'aria-label': ariaLabel, onClick } = props;
   const btnClassName = [
     className,
-    styles['toggle-btn'],
-    on ? styles['toggle-btn-on'] : styles['toggle-btn-off'],
+    styles.ToggleBtn,
+    on ? styles.ToggleBtnOn : styles.ToggleBtnOff,
   ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <label aria-label={ariaLabel || 'Toggle'} className={styles.label}>
+    <label aria-label={ariaLabel || 'Toggle'} className={styles.Label}>
       <input
         className={btnClassName}
         type='checkbox'
