@@ -60,11 +60,12 @@
 }
 
 .FeatureSystem {
-  @apply fixed z-50 bottom-1 right-1 w-96 bg-gray-900 text-gray-100 rounded-md;
+  @apply fixed flex flex-col z-50 bottom-1 right-1 w-96 bg-gray-900 text-gray-100 rounded-md max-h-screen overflow-hidden;
+  max-height: calc(100vh - .5rem);
 }
 
 .FeatureSystem .Container {
-  @apply relative p-4 space-y-2;
+  @apply relative p-4 space-y-2 flex flex-col overflow-hidden;
 }
 
 .FeatureSystem .Button {
@@ -79,10 +80,21 @@
   @apply outline-none ring-2 ring-gray-600 ring-offset-2 ring-offset-gray-900;
 }
 
-.FeatureSystem .Section1 {
-  @apply space-y-2 border-b border-gray-600 pb-2 !mt-0;
+.FeatureSystem .Title {
+  @apply !mt-0;
 }
 
+.FeatureSystem .Section1 {
+  @apply space-y-2 overflow-y-auto;
+}
+
+.FeatureSystem .AddFeatureButtonContainer {
+  @apply border-b border-gray-600 pb-2;
+}
+
+.FeatureSystem .AddFeatureButton {
+  @apply flex space-x-1 text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded-md;
+}
 .FeatureSystem .Button2 {
   @apply text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded-md;
 }
@@ -123,7 +135,5 @@
 .CodeBlock .Button .CheckIcon {
   @apply text-green-500;
 }
-
-/* FeatureItem */
 
 @tailwind utilities;

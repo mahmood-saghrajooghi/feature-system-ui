@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Copy from './icons/copy';
 import Check from './icons/check';
 
-const CodeBlock = ({ children }) => {
+const CodeBlock = ({ children, strToCopy } : { children: ReactNode, strToCopy: string }) => {
   const [renderCheck, setRenderCheck] = useState(false);
   const copy = () => {
-    navigator.clipboard.writeText(children);
+    navigator.clipboard.writeText(strToCopy);
     setRenderCheck(true);
   };
 

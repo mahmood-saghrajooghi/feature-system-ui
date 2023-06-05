@@ -4,6 +4,7 @@ import Saved from './icons/saved';
 import { useRef, useState } from 'react';
 import Edit from './icons/edit';
 import Check from './icons/check';
+import { NEW_FEATURE_NAME } from '../utils/feature-system-reducer';
 
 const FeatureItem = ({
   name,
@@ -15,13 +16,15 @@ const FeatureItem = ({
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentName, setCurrentName] = useState(name);
+
+  const editing = isEditing || name === NEW_FEATURE_NAME;
   return (
     <div className='FeatureItem'>
       <div className='FeatureItemInnerDiv'>
         <Toggle checked={active} onChange={onActiveChange}>
           <Toggle.Button />
-          <span className='FeatureItemNameWrapper '>
-            {isEditing ? (
+          <span className='FeatureItemNameWrapper'>
+            {editing ? (
               <input
                 value={currentName}
                 autoFocus
@@ -31,7 +34,7 @@ const FeatureItem = ({
             ) : (
               <div className='FeatureItemNameDiv'>{name}</div>
             )}
-            {isEditing ? (
+            {editing ? (
               <button
                 onClick={() => {
                   onNameChange(currentName);

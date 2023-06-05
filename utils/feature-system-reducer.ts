@@ -5,6 +5,9 @@ export const TOGGLE_FEATURE_SAVED = 'TOGGLE_FEATURE_SAVED';
 export const EDIT_FEATURE_NAME = 'EDIT_FEATURE_NAME';
 export const TOGGLE_HELP = 'TOGGLE_HELP';
 export const TOGGLE_FEATURE_SYSTEM = 'TOGGLE_FEATURE_SYSTEM';
+export const ADD_FEATURE = 'ADD_FEATURE';
+
+export const NEW_FEATURE_NAME = 'new feature';
 
 const initialFeatures = [
   { id: 1, name: 'feature-1', active: false, saved: false },
@@ -12,8 +15,8 @@ const initialFeatures = [
 ];
 
 export const initialState = {
-  isFeatureSystemOpen: false,
-  shouldShowHelp: false,
+  isFeatureSystemOpen: true,
+  shouldShowHelp: true,
   features: initialFeatures,
 };
 
@@ -27,7 +30,8 @@ export type Action =
       newFeatureName: string;
     }
   | { type: typeof TOGGLE_HELP }
-  | { type: typeof TOGGLE_FEATURE_SYSTEM };
+  | { type: typeof TOGGLE_FEATURE_SYSTEM }
+  | { type: typeof ADD_FEATURE; featureName: string };
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -67,6 +71,19 @@ export function reducer(state: State, action: Action): State {
       return {
         ...state,
         isFeatureSystemOpen: !state.isFeatureSystemOpen,
+      };
+    case ADD_FEATURE:
+      return {
+        ...state,
+        features: [
+          ...state.features,
+          {
+            id: state.features.length + 1,
+            name: action.featureName,
+            active: false,
+            saved: false,
+          },
+        ],
       };
     default:
       return state;
