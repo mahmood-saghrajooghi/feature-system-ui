@@ -56,11 +56,11 @@
 
 /* FeatureSystemModal */
 .Position {
-  @apply absolute bottom-5 right-5;
+  @apply fixed bottom-5 right-5;
 }
 
 .FeatureSystem {
-  @apply absolute bottom-1 right-1 w-96 bg-gray-900 text-gray-100 rounded-md;
+  @apply fixed z-50 bottom-1 right-1 w-96 bg-gray-900 text-gray-100 rounded-md;
 }
 
 .FeatureSystem .Container {
