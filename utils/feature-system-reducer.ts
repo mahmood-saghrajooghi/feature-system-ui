@@ -1,10 +1,8 @@
-
-
 export const TOGGLE_FEATURE_ACTIVE = 'TOGGLE_FEATURE_ACTIVE';
-export const TOGGLE_FEATURE_SAVED = 'TOGGLE_FEATURE_SAVED';
 export const EDIT_FEATURE_NAME = 'EDIT_FEATURE_NAME';
 export const TOGGLE_HELP = 'TOGGLE_HELP';
 export const TOGGLE_FEATURE_SYSTEM = 'TOGGLE_FEATURE_SYSTEM';
+export const REMOVE_FEATURE = 'REMOVE_FEATURE ';
 export const ADD_FEATURE = 'ADD_FEATURE';
 
 export const NEW_FEATURE_NAME = 'new feature';
@@ -23,7 +21,7 @@ export const initialState = {
 type State = typeof initialState;
 export type Action =
   | { type: typeof TOGGLE_FEATURE_ACTIVE; featureName: string }
-  | { type: typeof TOGGLE_FEATURE_SAVED; featureName: string }
+  | { type: typeof REMOVE_FEATURE; id: number }
   | {
       type: typeof EDIT_FEATURE_NAME;
       featureName: string;
@@ -44,14 +42,10 @@ export function reducer(state: State, action: Action): State {
             : feature
         ),
       };
-    case TOGGLE_FEATURE_SAVED:
+    case REMOVE_FEATURE:
       return {
         ...state,
-        features: state.features.map((feature) =>
-          feature.name === action.featureName
-            ? { ...feature, saved: !feature.saved }
-            : feature
-        ),
+        features: state.features.filter((feature) => feature.id !== action.id),
       };
     case EDIT_FEATURE_NAME:
       return {

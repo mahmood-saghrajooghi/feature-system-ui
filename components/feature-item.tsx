@@ -5,14 +5,14 @@ import { useRef, useState } from 'react';
 import Edit from './icons/edit';
 import Check from './icons/check';
 import { NEW_FEATURE_NAME } from '../utils/feature-system-reducer';
+import Trash from './icons/trash';
 
 const FeatureItem = ({
   name,
   active,
   onActiveChange,
-  saved,
-  onSaveChange,
   onNameChange,
+  onRemove,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentName, setCurrentName] = useState(name);
@@ -42,14 +42,14 @@ const FeatureItem = ({
                 }}
                 className='FeatureItemButton'
               >
-                <Check width={12} />
+                <Check />
               </button>
             ) : (
               <button
                 onClick={() => setIsEditing(true)}
                 className='FeatureItemButton'
               >
-                <Edit width={12} />
+                <Edit />
               </button>
             )}
           </span>
@@ -57,11 +57,10 @@ const FeatureItem = ({
       </div>
       <div className='FeatureItemButtonGroup'>
         <button
-          onClick={onSaveChange}
-          title='Persist'
-          className={saved ? 'FeatureItemButtonSaved' : ''}
+          onClick={onRemove}
+          title='Remove'
         >
-          {saved ? <Saved /> : <Save />}
+          <Trash />
         </button>
       </div>
     </div>

@@ -10,7 +10,7 @@ const Edit = ({
     height='16'
     viewBox='0 0 16 16'
     version='1.1'
-    width={width || '16'}
+    width={width || '14'}
     className={className}
   >
     <path

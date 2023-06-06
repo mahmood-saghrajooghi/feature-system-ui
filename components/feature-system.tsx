@@ -11,7 +11,7 @@ import {
   initialState,
   EDIT_FEATURE_NAME,
   TOGGLE_FEATURE_ACTIVE,
-  TOGGLE_FEATURE_SAVED,
+  REMOVE_FEATURE,
   TOGGLE_HELP,
   TOGGLE_FEATURE_SYSTEM,
   ADD_FEATURE,
@@ -72,19 +72,23 @@ const FeatureSystem = () => {
                 onActiveChange={() =>
                   dispatch({ type: TOGGLE_FEATURE_ACTIVE, featureName: name })
                 }
-                saved={saved}
-                onSaveChange={() =>
-                  dispatch({ type: TOGGLE_FEATURE_SAVED, featureName: name })
-                }
+                onRemove={() => {
+                  const confirmed = window.confirm(
+                    'Are you sure you want to delete?'
+                  );
+                  if (confirmed) {
+                    dispatch({ type: REMOVE_FEATURE, id });
+                  }
+                }}
               />
             ))}
           </div>
           <div className='AddFeatureButtonContainer'>
             <button
               className='AddFeatureButton'
-              onClick={() =>
-                dispatch({ type: ADD_FEATURE, featureName: NEW_FEATURE_NAME })
-              }
+              onClick={() => {
+                dispatch({ type: ADD_FEATURE, featureName: NEW_FEATURE_NAME });
+              }}
             >
               <Add />
               <span>Add Feature</span>
