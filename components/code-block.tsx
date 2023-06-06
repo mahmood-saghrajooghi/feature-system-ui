@@ -28,7 +28,7 @@ const CodeBlock = ({ children, strToCopy } : { children: ReactNode, strToCopy: s
         {renderCheck ? (
           <Check className='CheckIcon' />
         ) : (
-          <Copy className='' />
+          <Copy />
         )}
       </button>
     </div>
